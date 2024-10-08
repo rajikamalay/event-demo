@@ -1,6 +1,6 @@
 name: testing
 on:
-  watch_dispatch:
+  workflow_dispatch:
 jobs:
   myfirstjob:
     runs-on: ubuntu-latest
