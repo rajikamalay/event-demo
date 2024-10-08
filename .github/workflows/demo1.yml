@@ -1,6 +1,6 @@
 name: testing
 on:
-  push:
+  watch_dispatch:
 jobs:
   myfirstjob:
     runs-on: ubuntu-latest
