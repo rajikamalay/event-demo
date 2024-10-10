@@ -2,14 +2,38 @@ name: testing
 on:
   push:
 jobs:
-  myfirstjob:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: checking out the code
+      - name: Get the code
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist
 
-      - name: run the command
-        run: |
-          ls -latr
-          cat README.md
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        run: actions/checkout@v4|
+      - name: Install dependencies  
+        run: npm ci
+      - name: Build website
+        run: npm run build
+  deploy:
+    needs: build       
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+      run: echo "deploying..."
 
