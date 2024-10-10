@@ -33,5 +33,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-      run: echo "deploying..."
+        run: echo "deploying..."
 
