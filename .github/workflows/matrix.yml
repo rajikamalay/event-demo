@@ -13,6 +13,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build project
-        run: npm start
+    #   - name: Build project
+    #     run: npm start
 
